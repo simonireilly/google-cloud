@@ -1,0 +1,15 @@
+curl -X POST \
+     -H "Authorization: Bearer "$(gcloud auth application-default print-access-token) \
+     -H "Content-Type: application/json; charset=utf-8" \
+     --data "{
+  'config': {
+    'encoding': 'LINEAR16',
+    'sampleRateHertz': 16000,
+    'languageCode': 'en-US',
+    'enableWordTimeOffsets': false
+  },
+  'audio': {
+    'content': '/9j/7QBEUGhvdG9zaG9...base64-encoded-audio-content...fXNWzvDEeYxxxzj/Coa6Bax//Z'
+  }
+}" "https://speech.googleapis.com/v1/speech:recognize"
+

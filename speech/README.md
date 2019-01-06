@@ -11,3 +11,5 @@ This project makes use of the google cloud api libraries for the following langu
 [Ruby](/speech/ruby)
 
 [Node.js](/speech/node)
+
+[CommandLine](/speech/command-line)
