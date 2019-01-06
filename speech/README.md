@@ -8,5 +8,6 @@ Each of the subfolders is named for the language or implementation
 
 This project makes use of the google cloud api libraries for the following languages:
 
-[Ruby](/ruby)
-[Node.js](/node)
+[Ruby](/speech/ruby)
+
+[Node.js](/speech/node)
