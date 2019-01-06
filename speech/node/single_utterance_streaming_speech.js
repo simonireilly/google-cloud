@@ -2,9 +2,8 @@
 //
 // When the single utterance is closed it should open a new connection
 
+// Libraries
 const record = require('node-record-lpcm16');
-
-// Imports the Google Cloud client library
 const speech = require('@google-cloud/speech');
 
 // Creates a client
@@ -31,18 +30,16 @@ const recognizeStream = () => {
     client
     .streamingRecognize(request)
     .on('error', console.error)
-    .on('data', data =>
-      data.results[0] && data.results[0].alternatives[0]
-      ? sendResults(data)
-      : startRecording()
-      )
-    ).close
+    .on('data', data => {
+      data.results[0] && data.results[0].alternatives[0] ? sendResults(data) : startRecording()
+    })
+  )
 }
 
 // Send the results
-const sendResults = (data) => (
+const sendResults = (data) => {
   process.stdout.write(`Transcription: ${data.results[0].alternatives[0].transcript}\n`)
-  )
+}
 
 // Start recording and send the microphone input to the Speech API
 const startRecording = () => {
@@ -59,7 +56,7 @@ const startRecording = () => {
   .pipe(recognizeStream())
 }
 
+
+// Register the first startup
+process.stdout.write(`Listening, press Ctrl+C to stop.\n`);
 startRecording()
-
-
-console.log('Listening, press Ctrl+C to stop.');
